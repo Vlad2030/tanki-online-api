@@ -1,0 +1,1 @@
+LANG: list = ["ru", "en"]
