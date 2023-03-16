@@ -5,7 +5,7 @@ from config.languages import LANG
 from config.routes import API_URL
 
 
-async def get_profile_stat(
+async def get_profile(
         username: AnyStr,
         lang: str = "ru"
 ) -> Dict[AnyStr]:

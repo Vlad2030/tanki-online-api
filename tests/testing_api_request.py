@@ -1,11 +1,13 @@
 import asyncio
 
-from api.profile.stat import get_profile_stat
+import api.profile.stat
+import api.aio.request
 
 
 async def main() -> None:
-    responce = await get_profile_stat(username="BabyLaFlare")
-    print(responce)
+    responce = await api.profile.stat.get_profile(username="BabyLaFlare")
+    jsoned = api.aio.request.json_parse(data=responce)
+    print(jsoned)
 
 
 asyncio.run(main=main())
