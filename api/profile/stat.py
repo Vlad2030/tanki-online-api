@@ -5,10 +5,7 @@ from config.languages import LANG
 from config.routes import API_URL
 
 
-async def get_profile(
-        username: AnyStr,
-        lang: str = "ru"
-) -> Dict[AnyStr]:
+async def get_profile(username: AnyStr, lang: str = "ru") -> Dict[AnyStr]:
     """Get Profile Statistics
 
     Args:
@@ -20,16 +17,13 @@ async def get_profile(
     """
     url: str = f"{API_URL}/eu/profile/"
     url_params: dict = {
-        "user":
-            username,
-        "lang":
-            lang,
+        "user": username,
+        "lang": lang,
     }
 
     if LANG not in lang:
         raise ValueError(
-            "Language is not in the list of available languages. "
-            "Try use default"
+            "Language is not in the list of available languages. " "Try use default"
         )
 
     if not isinstance(username, str):
