@@ -12,7 +12,7 @@ url_params: dict = {
 async def async_get_current_online(format: bool = False) -> Dict[AnyStr, int]:
     responce: dict = await api.utils.request.Async.get(
         url=config.routes.TEST_API_URL,
-        params=url_params,
+        params={"v": ""},
     )
     json: list = api.utils.json.parse(data=responce)
     formated: str = api.utils.format.online(data=json)
