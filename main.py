@@ -25,4 +25,4 @@ def loop_get_online() -> None:
 if __name__ == "__main__":
     # async     0.3s speed
     # sync      0.6s speed
-    loop_get_online()
+    main()
