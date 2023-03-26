@@ -1,6 +1,6 @@
 from typing import AnyStr, Dict
 
-from api.utils.request import Async, Sync
+from api.utils.request import async_get, get
 from config.languages import LANG
 from config.routes import API_URL
 
@@ -36,7 +36,7 @@ async def async_get_profile(
     if not username:
         raise ValueError("Username should not be empty")
 
-    profile_stat: dict = await Async.get(url=url, params=url_params)
+    profile_stat: dict = await async_get(url=url, params=url_params)
 
     return profile_stat
 
@@ -71,6 +71,6 @@ def get_profile(
     if not username:
         raise ValueError("Username should not be empty")
 
-    profile_stat: dict = Sync.get(url=url, params=url_params)
+    profile_stat: dict = get(url=url, params=url_params)
 
     return profile_stat

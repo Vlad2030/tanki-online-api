@@ -1,54 +1,53 @@
 from typing import Any, AnyStr, Dict
 
-from aiohttp import ClientSession
-from requests import Session
+from aiohttp import ClientSession, http_exceptions
+from requests import Session, exceptions
 
 
-class Async:
-    async def __init__(
-            self: Any,
-            url: str,
-            params: Dict[str, int],
-            encoding: str
-    ) -> None:
-        self.url: str = url
-        self.params: Dict[str, int] = params
-        self.encoding: str = encoding
+async def async_get(
+        url: str,
+        params: Dict[AnyStr, int],
+        encoding: str = "UTF-8",
+) -> Dict | AnyStr:
+    """Get async URL response
 
-    async def get(
-            url: str,
-            params: Dict[AnyStr, int],
-            encoding: str = "UTF-8",
-    ) -> Dict | AnyStr:
-        """Get URL response
+    Args:
+        url (str): Your URL
+        params (Dict[AnyStr]): Parameters
+        data (AnyStr, optional): Data. Defaults to None.
+        encoding (str, optional): Encoding. Defaults to "UTF-8".
 
-        Args:
-            url (str): Your URL
-            params (Dict[AnyStr]): Parameters
-            data (AnyStr, optional): Data. Defaults to None.
-            encoding (str, optional): Encoding. Defaults to "UTF-8".
-
-        Returns:
-            Dict | AnyStr: Text response
-        """
-        async with ClientSession() as _session:
-            async with _session.get(url=url, params=params) as _response:
-                return await _response.text(encoding=encoding)
+    Returns:
+        Dict | AnyStr: Text response
+    """
+    async with ClientSession() as session:
+        async with session.get(url=url, params=params) as response:
+            if not response.status == 200:
+                return http_exceptions.HttpBadRequest(
+                    message="Request Failed"
+                )
+            
+            return await response.text(encoding=encoding)
 
 
-class Sync:
-    def __init__(
-            self: Any,
-            url: str,
-            params: Dict[str, int],
-    ) -> None:
-        self.url: str = url
-        self.params: Dict[str, int] = params
+def get(
+        url: str,
+        params: Dict[AnyStr, int],
+) -> Dict | AnyStr:
+    """Get URL response
 
-    def get(
-            url: str,
-            params: Dict[AnyStr, int],
-    ) -> Dict | AnyStr:
-        with Session() as session:
-            with session.get(url=url, params=params) as response:
-                return response.text
+    Args:
+        url (str): Your URL
+        params (Dict[AnyStr]): Parameters
+        data (AnyStr, optional): Data. Defaults to None.
+        encoding (str, optional): Encoding. Defaults to "UTF-8".
+
+    Returns:
+        Dict | AnyStr: Text response
+    """
+    with Session() as session:
+        with session.get(url=url, params=params) as response:
+            if not response == 200:
+                exceptions.RequestException("Request Failed")
+
+            return response.text

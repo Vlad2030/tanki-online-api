@@ -10,7 +10,7 @@ url_params: dict = {
     }
 
 async def async_get_current_online(format: bool = False) -> Dict[AnyStr, int]:
-    responce: dict = await api.utils.request.Async.get(
+    responce: dict = await api.utils.request.async_get(
         url=config.routes.TEST_API_URL,
         params={"v": ""},
     )
@@ -24,7 +24,7 @@ async def async_get_current_online(format: bool = False) -> Dict[AnyStr, int]:
 
 
 def get_current_online(format: bool = False) -> Dict[AnyStr, int]:
-    responce: dict = api.utils.request.Sync.get(
+    responce: dict = api.utils.request.get(
         url=config.routes.TEST_API_URL,
         params=url_params
     )

@@ -1,4 +1,4 @@
-from json import loads
+from orjson import loads
 from typing import Any
 
 
