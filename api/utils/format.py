@@ -2,6 +2,8 @@ from typing import AnyStr, Dict, List
 
 
 def player_stat(data: Dict[AnyStr, int]) -> AnyStr:
+    responce:               list = []
+
     if not isinstance(data, Dict[AnyStr, int]):
         raise TypeError("Data argument need a dict type")
 
@@ -25,6 +27,12 @@ def player_stat(data: Dict[AnyStr, int]) -> AnyStr:
     caught_golds:           int = dict_data["caughtGolds"]
     earned_crystals:        int = dict_data["earnedCrystals"]
 
+    drones_played:          list = dict_data["dronesPlayed"]
+
+    for drone in drones_played:
+        grade:              int = drone["grade"]
+        id:                 int = drone["id"]
+        pass
 
 def online(data: List[AnyStr], debug: bool = False) -> AnyStr:
     response: list = []
