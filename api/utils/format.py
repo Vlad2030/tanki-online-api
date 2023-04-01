@@ -13,7 +13,7 @@ def player_stat(data: Dict[AnyStr, int]) -> AnyStr:
     dict_data: dict = data["responce"]
 
     name:                   str = dict_data["name"]
-    has_premium:            bool = dict_data["hasPremium"]
+    has_premium:           bool = dict_data["hasPremium"]
     gear_score:             int = dict_data["gearScore"]
 
     rank:                   int = dict_data["rank"]
@@ -27,12 +27,33 @@ def player_stat(data: Dict[AnyStr, int]) -> AnyStr:
     caught_golds:           int = dict_data["caughtGolds"]
     earned_crystals:        int = dict_data["earnedCrystals"]
 
-    drones_played:          list = dict_data["dronesPlayed"]
+    drones_info:           list = drones(data=dict_data["dronesPlayed"])
 
-    for drone in drones_played:
+
+def drones(data: Dict[AnyStr]) -> AnyStr:
+    responce: list = []
+
+    for drone in data:
         grade:              int = drone["grade"]
         id:                 int = drone["id"]
-        pass
+        image_url:          str = drone["imageUrl"]
+        drone_name:         str = drone["name"]
+        properties:         None
+        score_earned:       int = drone["scoreEarned"]
+        time_played:        int = drone["timePlayed"]
+
+        responce.append(
+            f"Grade:\t{grade}"
+            f"ID:\t{id}"
+            f"Image URL:\t{image_url}"
+            f"Drone name:\t{drone_name}"
+            f"Properties:\t{properties}"
+            f"Score earned:\t{score_earned}"
+            f"Time played:\t{time_played}"
+        )
+
+    return "\n".join(responce)
+
 
 def online(data: List[AnyStr], debug: bool = False) -> AnyStr:
     response: list = []
@@ -47,17 +68,18 @@ def online(data: List[AnyStr], debug: bool = False) -> AnyStr:
         usercount:          str = server["UserCount"]
 
         response.append(
-                f"Release:\t{release}\n"
-                f"Server Domain:\t{domain}\n"
-                f"XML Url:\t{url}\n"
-                f"UserCount:\t{usercount}\n"
-                f"All response:\t{server}\n"
-            )
+            f"Release:\t{release}\n"
+            f"Server Domain:\t{domain}\n"
+            f"XML Url:\t{url}\n"
+            f"UserCount:\t{usercount}\n"
+            f"All response:\t{server}\n"
+        )
 
         if debug:
             print(response)
 
     return '\n'.join(response)
+
 
 def ranks(rank: int) -> str:
     return
