@@ -15,14 +15,18 @@ def main() -> None:
     response = api.online.test_server.get_current_online(format=True)
     print(response)
 
-def loop_get_online() -> None:
-    while True:
-        request: dict = api.online.test_server.get_current_online(format=False)
-        json: list = api.utils.json.parse(request)
-        print(f' 1 TEST SERVER ONLINE:\t{json[0]["UserCount"]}\t\t2 TEST SERVER ONLINE:\t{json[1]["UserCount"]}', end="\r")
-        time.sleep(0.01)
 
 if __name__ == "__main__":
     # async     0.3s speed
     # sync      0.6s speed
+    start1: float = time.perf_counter()
+    asyncio.run(async_main())
+    end1: float = time.perf_counter() - start1
+    start2: float = time.perf_counter()
     main()
+    end2: float = time.perf_counter() - start2
+    print(
+        f"Async {end1:.3} sec\n"
+        f"Sync {end2:.3} sec\n"
+        f"Async faster than {end2/end1:.3} times"
+    )

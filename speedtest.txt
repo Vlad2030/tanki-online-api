@@ -1,0 +1,27 @@
+Release:	deploy1-pubto
+Server Domain:	public-deploy1.test-eu.tankionline.com
+XML Url:	https://public-deploy1.test-eu.tankionline.com/desktop/index.html?resources=../resources&config=https://c1.public-deploy1.test-eu.tankionline.com/config.xml
+UserCount:	9
+All response:	{'Release': 'deploy1-pubto', 'Domain': 'public-deploy1.test-eu.tankionline.com', 'Url': 'https://public-deploy1.test-eu.tankionline.com/desktop/index.html?resources=../resources&config=https://c1.public-deploy1.test-eu.tankionline.com/config.xml', 'UserCount': 9}
+
+Release:	deploy8-pubto
+Server Domain:	public-deploy8.test-eu.tankionline.com
+XML Url:	https://public-deploy8.test-eu.tankionline.com/desktop/index.html?resources=../resources&config=https://c1.public-deploy8.test-eu.tankionline.com/config.xml
+UserCount:	68
+All response:	{'Release': 'deploy8-pubto', 'Domain': 'public-deploy8.test-eu.tankionline.com', 'Url': 'https://public-deploy8.test-eu.tankionline.com/desktop/index.html?resources=../resources&config=https://c1.public-deploy8.test-eu.tankionline.com/config.xml', 'UserCount': 68}
+
+Release:	deploy1-pubto
+Server Domain:	public-deploy1.test-eu.tankionline.com
+XML Url:	https://public-deploy1.test-eu.tankionline.com/desktop/index.html?resources=../resources&config=https://c1.public-deploy1.test-eu.tankionline.com/config.xml
+UserCount:	9
+All response:	{'Release': 'deploy1-pubto', 'Domain': 'public-deploy1.test-eu.tankionline.com', 'Url': 'https://public-deploy1.test-eu.tankionline.com/desktop/index.html?resources=../resources&config=https://c1.public-deploy1.test-eu.tankionline.com/config.xml', 'UserCount': 9}
+
+Release:	deploy8-pubto
+Server Domain:	public-deploy8.test-eu.tankionline.com
+XML Url:	https://public-deploy8.test-eu.tankionline.com/desktop/index.html?resources=../resources&config=https://c1.public-deploy8.test-eu.tankionline.com/config.xml
+UserCount:	68
+All response:	{'Release': 'deploy8-pubto', 'Domain': 'public-deploy8.test-eu.tankionline.com', 'Url': 'https://public-deploy8.test-eu.tankionline.com/desktop/index.html?resources=../resources&config=https://c1.public-deploy8.test-eu.tankionline.com/config.xml', 'UserCount': 68}
+
+Async 0.172 sec
+Sync 0.237 sec
+Async faster than 1.38 times

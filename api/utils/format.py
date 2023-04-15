@@ -30,7 +30,7 @@ def player_stat(data: Dict[AnyStr, int]) -> AnyStr:
     drones_info:           list = drones(data=dict_data["dronesPlayed"])
 
 
-def drones(data: Dict[AnyStr]) -> AnyStr:
+def drones(data: dict) -> AnyStr:
     responce: list = []
 
     for drone in data:
